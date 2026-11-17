@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>02 - Content Manipulation</title>
+  <style>
+    body { font-family: sans-serif; padding: 20px; background: #fdf6e3; }
+    .box { background: white; padding: 15px; border-radius: 8px; margin: 10px 0; border: 1px solid #d33682; }
+    .hidden-text { display: none; }
+  </style>
+</head>
+<body>
+  <h1>innerHTML vs textContent vs innerText</h1>
+
+  <div class="box" id="sample">
+    Hello <span class="hidden-text">Hidden</span> <strong>World!</strong>
+  </div>
+
+  <button id="btn-check">Compare Content Types</button>
+  <button id="btn-update">Update Content</button>
+
+  <div id="output" style="margin-top:20px; background:#eee; padding:10px; border-radius:5px;"></div>
+
+  <script>
+    const sample = document.getElementById('sample');
+    const output = document.getElementById('output');
+
+    document.getElementById('btn-check').addEventListener('click', () => {
+      output.innerHTML = `
+        <p><strong>innerHTML:</strong> <code>${escapeHTML(sample.innerHTML)}</code> (Includes HTML tags)</p>
+        <p><strong>textContent:</strong> <code>"${sample.textContent.trim()}"</code> (Includes hidden text, ignores CSS styling)</p>
+        <p><strong>innerText:</strong> <code>"${sample.innerText}"</code> (Only visible rendered text on screen)</p>
+      `;
+    });
+
+    document.getElementById('btn-update').addEventListener('click', () => {
+      // innerHTML parses HTML tags!
+      sample.innerHTML = '<em>Content updated safely via <strong>innerHTML</strong>!</em>';
+    });
+
+    function escapeHTML(str) {
+      return str.replace(/</g, '&lt;').replace(/>/g, '&gt;');
+    }
+  </script>
+</body>
+</html>

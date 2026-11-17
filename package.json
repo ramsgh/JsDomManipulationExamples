@@ -1,0 +1,13 @@
+{
+  "name": "js-dom-manipulation-small-programs",
+  "version": "1.0.0",
+  "description": "5 Small Programs covering DOM Selection, Content, Styles, Creation, and Removal",
+  "main": "01-selecting-elements.html",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node --watch server.js"
+  },
+  "dependencies": {
+    "express": "^5.3.0"
+  }
+}

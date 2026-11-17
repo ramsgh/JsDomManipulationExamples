@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>05 - Removing Elements</title>
+  <style>
+    body { font-family: sans-serif; padding: 20px; background: #fff1f2; }
+    .item-card { background: white; padding: 12px 20px; border-radius: 6px; margin: 8px 0; max-width: 350px; display: flex; justify-content: space-between; align-items: center; border: 1px solid #fecdd3; }
+    button.delete-btn { background: #e11d48; color: white; border: none; padding: 6px 12px; border-radius: 4px; cursor: pointer; }
+    button.delete-btn:hover { background: #be123c; }
+  </style>
+</head>
+<body>
+  <h1>Removing Elements</h1>
+
+  <div id="container" style="background: #2906dc; padding: 20px; border-radius: 8px; border: 1px solid #fecdd3;">
+    <div class="item-card" id="card1">
+      <span>Item A (Uses .remove())</span>
+      <button class="delete-btn" onclick="removeSelf('card1')">Remove Me</button>
+    </div>
+
+    <div class="item-card" id="card2">
+      <span>Item B (Uses .removeChild())</span>
+      <button class="delete-btn" onclick="removeFromParent('card2')">Remove Me</button>
+    </div>
+
+    <div class="item-card" id="card3">
+      <span>Item C (Uses .remove())</span>
+      <button class="delete-btn" onclick="removeSelf('card3')">Remove Me</button>
+    </div>
+  </div>
+
+  <script>
+    // 1. Direct Removal: element.remove() (Modern Approach)
+    function removeSelf(elementId) {
+      const el = document.getElementById(elementId);
+      if (el) {
+        el.remove(); // Removes the element directly from DOM
+        console.log(`Element #${elementId} removed directly via .remove()`);
+      }
+    }
+
+    // 2. Parent-based Removal: parentElement.removeChild(childElement) (Traditional)
+    function removeFromParent(elementId) {
+      const child = document.getElementById(elementId);
+      const parent = document.getElementById('container');
+      if (child && parent) {
+        parent.removeChild(child); // Parent removes the child
+        console.log(`Element #${elementId} removed via parent.removeChild()`);
+      }
+    }
+  </script>
+</body>
+</html>

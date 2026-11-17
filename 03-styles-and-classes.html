@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>03 - Styles & Classes</title>
+  <style>
+    body { font-family: sans-serif; padding: 20px; transition: background 0.3s; }
+    .box { width: 200px; height: 100px; background: #94a3b8; border-radius: 8px; margin: 15px 0; display: flex; align-items: center; justify-content: center; color: white; font-weight: bold; transition: all 0.3s; }
+    
+    /* CSS Classes to Toggle */
+    .active { background: #16a34a !important; transform: scale(1.05); }
+    .dark-theme { background: #0f172a; color: #f8fafc; }
+  </style>
+</head>
+<body>
+  <h1>Changing Styles & Classes</h1>
+
+  <div id="myBox" class="box">Target Box</div>
+
+  <button id="btnStyle">Change Inline Style</button>
+  <button id="btnAdd">Add .active</button>
+  <button id="btnRemove">Remove .active</button>
+  <button id="btnToggle">Toggle Dark Theme</button>
+
+  <script>
+    const box = document.getElementById('myBox');
+
+    // 1. Changing Inline Styles
+    document.getElementById('btnStyle').addEventListener('click', () => {
+      box.style.backgroundColor = '#2563eb';
+      box.style.borderRadius = '20px';
+      box.innerText = 'Inline Styled!';
+    });
+
+    // 2. classList.add
+    document.getElementById('btnAdd').addEventListener('click', () => {
+      box.classList.add('active');
+      box.innerText = 'Class .active Added';
+    });
+
+    // 3. classList.remove
+    document.getElementById('btnRemove').addEventListener('click', () => {
+      box.classList.remove('active');
+      box.innerText = 'Class .active Removed';
+    });
+
+    // 4. classList.toggle
+    document.getElementById('btnToggle').addEventListener('click', () => {
+      document.body.classList.toggle('dark-theme');
+    });
+  </script>
+</body>
+</html>

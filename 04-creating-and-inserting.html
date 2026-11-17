@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>04 - Creating & Inserting Elements</title>
+  <style>
+    body { font-family: sans-serif; padding: 20px; background: #f8fafc; }
+    ul { background: white; padding: 20px 40px; border-radius: 8px; border: 1px solid #cbd5e1; max-width: 300px; }
+    li { margin: 8px 0; font-size: 1.1rem; }
+    .new-item { color: #2563eb; font-weight: bold; }
+    .first-item { color: #dc2626; font-weight: bold; }
+  </style>
+</head>
+<body>
+  <h1>Creating & Inserting Elements</h1>
+
+  <ul id="itemList">
+    <li id="item2" >Existing Item 2</li>   
+  </ul>
+  
+  <button id="btnAppend">appendChild (Add at end)</button>
+  <button id="btnInsertBefore">insertBefore (Add at start)</button>
+
+  <script>
+    const list = document.getElementById('itemList');
+    let count = 3;
+
+    // 1. createElement + appendChild
+    document.getElementById('btnAppend').addEventListener('click', () => {
+      // Step A: Create the element
+      const newLi = document.createElement('li');
+      
+      // Step B: Set content & class
+      newLi.textContent = `New Item ${count++}`;
+      newLi.classList.add('new-item');
+
+      // Step C: Append to parent
+      list.appendChild(newLi);
+    });
+
+    // 2. createElement + insertBefore
+    document.getElementById('btnInsertBefore').addEventListener('click', () => {
+      const firstLi = document.createElement('li');
+      firstLi.textContent = '★ Item 1 (Inserted First)';
+      firstLi.classList.add('first-item');
+
+      // Reference node: Insert before the current first child of <ul>
+      const referenceItem = list.firstChild;
+      list.insertBefore(firstLi, referenceItem);
+    });
+  </script>
+</body>
+</html>
